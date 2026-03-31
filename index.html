@@ -50,14 +50,32 @@
 	     inset -2px -2px 3px rgb(255 255 255 / 0.6),
 	     inset 2px 2px 3px rgb(0 0 0 / 0.6);
      }
+
+     img {
+	 display: block;
+	 margin: auto;
+	 width: 50%;
+     }
+
+     .parent {
+	 min-height: 400px;
+	 background: white;
+	 display: flex;
+	 flex-direction: column;
+	 align-items: center;
+	 justify-content: center;
+     }
     </style>
   </head>
   <body>
-      <label for="xmlftQuery">Query:</label>
-      <input type="text" id="xmlftQuery" name="xmlftQuery"/>
-      <button id="suggestions" class="query styled" type="button">Suggestions</button>
-      <label for="xmlftResult">Result:</label>
-      <textarea  rows="5" cols="64" id="xmlftResult" name="xmlftResult"></textarea>
+      <img src="bruno-col-roule.jpg" alt="Col roulé"></img>
+      <div class="parent">
+	  <label for="xmlftQuery">Query:</label>
+	  <input type="text" id="xmlftQuery" name="xmlftQuery"/>
+	  <button id="suggestions" class="query styled" type="button">Suggestions</button>
+	  <label for="xmlftResult">Result:</label>
+	  <textarea  rows="5" cols="64" id="xmlftResult" name="xmlftResult"></textarea>
+      </div>
   </body>
 </html>
 
