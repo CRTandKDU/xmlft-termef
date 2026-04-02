@@ -1,3 +1,18 @@
+/**
+ * @file Experimentations with queries against TerMef XML file. Uses jQuery.
+ * @author jmc@neurondata.org  
+ */
+
+/**
+ * Test the presence of text expression expr in an 'Article' field
+ *
+ * @param {string} expr - Text expression
+ * @param {array} arr - Array of same XML-element fields in an 'Article'
+ * @param {function} func - Callback function
+ * @param {object} entry - Article entry, passed to the callback
+ * @param {object} article - Article, passed to the callback
+ * @returns {*} -  
+ */
 const testSingleField = function( expr, arr, func, entry, article ){
     $( arr ).each( function (index ){
 	if( $(this).text().toLowerCase().includes( expr.toLowerCase() ) ){
@@ -7,6 +22,16 @@ const testSingleField = function( expr, arr, func, entry, article ){
 };
 
 
+/**
+ * Test the presence of all regexps in an 'Article' field 
+ *
+ * @param {*} regexps - An array of regular expressions which should all be matched
+ * @param {array} arr - Array of same XML-element fields in an 'Article'
+ * @param {function} func - Callback function
+ * @param {object} entry - Article entry, passed to the callback
+ * @param {object} article - Article, passed to the callback
+ * @returns {*} - 
+ */
 const testReSingleField = function( regexps, arr, func, entry, article ){
     $( arr ).each( function(index){
 	// And test all re in regexps
@@ -27,6 +52,14 @@ const testReSingleField = function( regexps, arr, func, entry, article ){
 };
 
 
+/**
+ * Given an expression and a domain, find suggested revisions in TerMef
+ *
+ * @param {string} expr - Candidate text for revision
+ * @param {string} domain - Domain of search within TerMef
+ * @param {function} func - Callback which will be passed an index, the term entry and the article on each match
+ * @returns {*} - 
+ */
 const querySuggestions = function( expr, domain, func ){
     $.get( "FranceTerme.xml",
 	   function( data ){
@@ -59,6 +92,12 @@ const querySuggestions = function( expr, domain, func ){
 };
 
 
+/**
+ * Inits and sets up search on button
+ *
+ * @param {nil} nil - 
+ * @returns {*} - 
+ */
 $( function(){
     $( "#suggestions" ).on( "click", function(){
 	$( "#xmlftResult" ).val( "" );
